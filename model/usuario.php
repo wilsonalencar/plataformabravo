@@ -126,7 +126,7 @@ class usuario extends app
 
 		$conn = $this->PlatformDB->mysqli_connection;		
 		$query = sprintf("SELECT A.id, A.nome, A.email, A.senha, A.id_perfilusuario, A.reset_senha FROM plataformausuario A WHERE A.email = '%s' AND A.senha = '%s' AND A.status = '%s'", 
-			$this->email, $this->senha, $this::STATUS_SISTEMA_ATIVO);	
+			$this->email, base64_encode($this->senha), $this::STATUS_SISTEMA_ATIVO);	
 		
 		if (!$result = $conn->query($query)) {
 			return false;	
@@ -136,7 +136,7 @@ class usuario extends app
 			$_SESSION['id'] 				= $row['id'];
  			$_SESSION['nome'] 	   			= $row['nome'];
  			$_SESSION['email'] 				= $row['email'];
- 			$_SESSION['senha'] 				= $row['senha'];
+ 			$_SESSION['senha'] 				= base64_decode($row['senha']);
  			$_SESSION['id_perfilusuario'] 	= $row['id_perfilusuario'];
  			$_SESSION['reset_senha'] 		= $row['reset_senha'];
  			$_SESSION['logado'] 			= 1;	
@@ -218,7 +218,7 @@ class usuario extends app
 		$plataforma = $this->PlatformDB->mysqli_connection;
 		$query = sprintf(" INSERT INTO plataformausuario (nome, email, id_perfilusuario, id_responsabilidade, senha, reset_senha, usuario, status, data_cadastro)
 		VALUES ('%s','%s', %d, %d, '%s', '%s', '%s', '%s', '%s')", 
-			$this->nome, $this->email,$this->id_plataforma, $this->id_responsabilidade,funcionalidadeConst::SENHA_PADRAO, funcionalidadeConst::RESET_TRUE, $_SESSION['email'], $this->status, date('Y-m-d h:i:s'));
+			$this->nome, $this->email,$this->id_plataforma, $this->id_responsabilidade,base64_encode(funcionalidadeConst::SENHA_PADRAO), funcionalidadeConst::RESET_TRUE, $_SESSION['email'], $this->status, date('Y-m-d h:i:s'));
 		if (!$plataforma->query($query)) {
 			$this->msg = "Ocorreu um erro na PLATAFORMA, contate o administrador do sistema!";
 			return false;	
@@ -258,7 +258,7 @@ class usuario extends app
 
 		$conn = $this->PlatformDB->mysqli_connection;
 		$query = sprintf(" UPDATE plataformausuario SET senha = '%s', data_alteracao = NOW(), reset_senha = '%s' WHERE id = %d", 
-			$this->senha, funcionalidadeConst::RESET_FALSE, $_SESSION['id']);	
+			base64_encode($this->senha), funcionalidadeConst::RESET_FALSE, $_SESSION['id']);	
 		if (!$conn->query($query)) {
 			$this->msg = "Ocorreu um erro, contate o administrador do sistema!";
 			return false;	
