@@ -1,13 +1,18 @@
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Roboto:300,400,500');
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500');
 
 body, html {
-	height: 100%;
-	background-repeat: no-repeat;   
-	background:black;
-	position: relative;
+    font-family: "Montserrat";  /* just a custom font */
+    font-size: 14px;
+    background: rgba(236, 239, 243, 0.7);
 }
+
+a:-webkit-any-link{
+    text-decoration:none !important;    /* do not underline links */
+    color: black; !important;           /* give links a default color */
+}
+
 
 .background-login {
     background-size: cover;

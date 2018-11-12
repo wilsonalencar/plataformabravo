@@ -13,7 +13,7 @@
 <div class="background-login" style="background-image: url('<?php echo app::dominio; ?>view/assets/img/background-login.png');">
 	<div class="logo-login">
         <img src="<?php echo app::dominio; ?>view/assets/img/logo-login.png">
-        <h3>PLATAFORMA</h3>
+        <h3>Plataforma</h3>
     </div>
     <div class="box-login">
         <h3>LOGIN</h3>
