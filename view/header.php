@@ -68,9 +68,46 @@
                                 </li>
                             </ul>
                         </li>
-                         <?php } ?>
+                        <?php } ?>
+
+                        <?php if ( $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO) { ?>
+                            <li>
+                                <a class="active-menu" href="#" onclick="Gestao()"><i class="fa fa-bar-chart-o"></i> Gestão de Projetos  </a>
+                            </li>
+                        <?php } ?>
+
+                        <?php if ($_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS) {?>
+                                <li>
+                                    <a class="active-menu" href="#" onclick="Tax()"><i class="fa fa-book"></i> Tax Calendar</a>
+                                </li>
+                        <?php } ?>
 
                     </ul>
                 </div>
             </nav>
+
+
+
+        <form action="<?php echo funcionalidadeConst::LINK_GP ?>" id="projetos" method="post">
+            <input type="hidden" name="login" value="<?php echo $_SESSION['email']; ?>">
+            <input type="hidden" name="senha" value="<?php echo $_SESSION['senha']; ?>">
+        </form>
+
+        <form action="<?php echo funcionalidadeConst::LINK_TAX ?>" id="agenda" method="post">
+            <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+            <input type="hidden" name="password" value="<?php echo $_SESSION['senha']; ?>">
+        </form>
+
+
+
+<script type="text/javascript">
+  function Gestao(){
+    $('#projetos').submit();
+  }
+
+  function Tax(){
+    $('#agenda').submit();
+  }
+
+</script>
 <?php   } ?>
