@@ -78,7 +78,7 @@
 
                         <?php if ($_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS) {?>
                                 <li>
-                                    <a class="active-menu" href="#" onclick="Tax()"><i class="fa fa-book"></i> Tax Calendar</a>
+                                    <a class="active-menu" href="#" onclick="Tax()"><i class="fa fa-book"></i> Fiscal</a>
                                 </li>
                         <?php } ?>
 
