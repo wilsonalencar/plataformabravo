@@ -26,7 +26,7 @@ class perfilusuario extends app
 		{
 			while($row = $result->fetch_array(MYSQLI_ASSOC))
 			echo sprintf("<option %s value='%d'>%s</option>\n", $selected == $row['id'] ? "selected" : "",
-			$row['id'], $row['name']);
+			$row['id'], utf8_encode($row['name']));
 		}
 	}
 
@@ -52,7 +52,7 @@ class perfilusuario extends app
 		{
 			while($row = $result->fetch_array(MYSQLI_ASSOC))
 			echo sprintf("<option %s value='%d'>%s</option>\n", $selected == $row['id'] ? "selected" : "",
-			$row['id'], $row['razao_social']);
+			$row['id'], utf8_encode($row['razao_social']));
 		}
 	}	
 
@@ -65,7 +65,7 @@ class perfilusuario extends app
 		{
 			while($row = $result->fetch_array(MYSQLI_ASSOC))
 			echo sprintf("<option %s value='%d'>%s</option>\n", $selected == $row['id'] ? "selected" : "",
-			$row['id'], $row['nome']);
+			$row['id'], utf8_encode($row['nome']));
 		}
 	}	
 }
