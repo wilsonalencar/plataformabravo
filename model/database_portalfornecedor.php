@@ -1,15 +1,15 @@
 <?php
 
-class configAgenda extends agenda
+class configPortal extends portalfornecedor
 {
-const  dominio = 'http://dev.agenda/';
-const  path    = '/var/www/html/agenda/';
+const  dominio = 'http://dev.portalfornecedor/';
+const  path    = '/var/www/html/portalfornecedor/';
 }
 
-class agenda {	
+class portalfornecedor {	
 	public $mysqli_connection;
 	public function __construct() {
-		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Everty_14', 'agenda');
+		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Everty_14', 'portalfornecedor');
 		if($mysqli_connection->connect_error){
 		  echo "Desconectado! Erro: " . $mysqli_connection->connect_error;
 		}

@@ -3,13 +3,13 @@
 class configApontamento extends apontamentohoras
 {
 const  dominio = 'http://dev.apontamentohoras/';
-const  path    = '/var/www/html/unionit/apontamentohoras/';
+const  path    = '/var/www/html/apontamentohoras/';
 }
 
 class apontamentohoras {
 	public $mysqli_connection;
 	public function __construct() {
-		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'cpd123', 'apontamentohoras');
+		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Everty_14', 'apontamentohoras');
 		if($mysqli_connection->connect_error){
 		  echo "Desconectado! Erro: " . $mysqli_connection->connect_error;
 		}

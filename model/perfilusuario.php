@@ -68,4 +68,17 @@ class perfilusuario extends app
 			$row['id'], utf8_encode($row['nome']));
 		}
 	}	
+
+	public function portalPerfis($selected=0)
+	{
+		$conn = $this->PortalDB->mysqli_connection;
+		$query = "SELECT id,nome FROM perfilusuario ORDER BY nome";
+
+		if($result = $conn->query($query))
+		{
+			while($row = $result->fetch_array(MYSQLI_ASSOC))
+			echo sprintf("<option %s value='%d'>%s</option>\n", $selected == $row['id'] ? "selected" : "",
+			$row['id'], utf8_encode($row['nome']));
+		}
+	}
 }

@@ -25,30 +25,65 @@ function getDataUsuario(id)
             $("#nome").val(d.data.nome);
             $("#email").val(d.data.email);
             $("#id_plataforma").val(d.data.id_perfilusuario);
+            
             if (d.data.id_perfilusuario == 0) {
               $('.apontamento').css('display', 'none');
               $('.agenda').css('display', 'none');
+              $('.portal').css('display', 'none');
             }
 
             if (d.data.id_perfilusuario == 1) {
               $('.apontamento').css('display', 'block');
               $('.agenda').css('display', 'block');
+              $('.portal').css('display', 'block');
             }
 
             if (d.data.id_perfilusuario == 2) {
               $('.apontamento').css('display', 'none');
               $('.agenda').css('display', 'block');
+              $('.portal').css('display', 'none');
             }
 
             if (d.data.id_perfilusuario == 3) {
               $('.agenda').css('display', 'none');
               $('.apontamento').css('display', 'block');
+              $('.portal').css('display', 'none');
             }
 
             if (d.data.id_perfilusuario == 4) {
               $('.apontamento').css('display', 'block');
               $('.agenda').css('display', 'block');
+              $('.portal').css('display', 'none');
             }
+
+            //BPO e Fornecedor
+            if (d.data.id_perfilusuario == 5) {
+              $('.apontamento').css('display', 'none');
+              $('.agenda').css('display', 'block');
+              $('.portal').css('display', 'block');
+            }
+
+            //BPO, Fornecedor e Projeto
+            if (d.data.id_perfilusuario == 6) {
+              $('.apontamento').css('display', 'block');
+              $('.agenda').css('display', 'block');
+              $('.portal').css('display', 'block');
+            }
+
+            //Fornecedor
+            if (d.data.id_perfilusuario == 7) {
+              $('.apontamento').css('display', 'none');
+              $('.agenda').css('display', 'none');
+              $('.portal').css('display', 'block');
+            }
+
+            //Projeto e Fornecedor
+            if (d.data.id_perfilusuario == 8) {
+              $('.apontamento').css('display', 'block');
+              $('.agenda').css('display', 'none');
+              $('.portal').css('display', 'block');
+            }
+
 
             if (d.data.id_responsabilidade != '') {
                 $("#id_responsabilidade").val(d.data.id_responsabilidade);

@@ -3,13 +3,13 @@
 class config extends plataforma
 {
 const  dominio = 'http://dev.platform/';
-const  path    = '/var/www/html/unionit/plataforma/';
+const  path    = '/var/www/html/plataforma/';
 }
 
 class plataforma {
 	public $mysqli_connection;
 	public function __construct() {
-		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'cpd123', 'plataforma');
+		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Everty_14', 'plataforma');
 		if($mysqli_connection->connect_error){
 		  echo "Desconectado! Erro: " . $mysqli_connection->connect_error;
 		}

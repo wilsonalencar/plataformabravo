@@ -70,15 +70,21 @@
                         </li>
                         <?php } ?>
 
-                        <?php if ($_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS) {?>
+                        <?php if ($_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PORTAL) {?>
                                 <li>
                                     <a class="active-menu" href="#" onclick="Tax()"><i class="fa fa-book"></i> Fiscal</a>
                                 </li>
                         <?php } ?>
                         
-                        <?php if ( $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO) { ?>
+                        <?php if ( $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PORTAL) { ?>
                             <li>
                                 <a class="active-menu" href="#" onclick="Gestao()"><i class="fa fa-bar-chart-o"></i> Gestão de Projetos  </a>
+                            </li>
+                        <?php } ?>
+
+                        <?php if ( $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS) { ?>
+                            <li>
+                                <a class="active-menu" href="#" onclick="Portal()"><i class="fa fa-group"></i> Portal do Fornecedor  </a>
                             </li>
                         <?php } ?>
 
@@ -99,6 +105,11 @@
             <input type="hidden" name="password" value="<?php echo $_SESSION['senha']; ?>">
         </form>
 
+        <form action="<?php echo funcionalidadeConst::LINK_PORTAL ?>" id="portal" method="POST">
+            <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+            <input type="hidden" name="password" value="<?php echo $_SESSION['senha']; ?>">
+        </form>
+
 
 
 <script type="text/javascript">
@@ -108,6 +119,10 @@
 
   function Tax(){
     $('#agenda').submit();
+  }
+
+  function Portal(){
+    $('#portal').submit();
   }
 
 </script>
