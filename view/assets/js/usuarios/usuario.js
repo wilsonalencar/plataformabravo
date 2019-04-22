@@ -30,30 +30,35 @@ function getDataUsuario(id)
               $('.apontamento').css('display', 'none');
               $('.agenda').css('display', 'none');
               $('.portal').css('display', 'none');
+              $('.folha').css('display', 'none');
             }
 
             if (d.data.id_perfilusuario == 1) {
               $('.apontamento').css('display', 'block');
               $('.agenda').css('display', 'block');
               $('.portal').css('display', 'block');
+              $('.folha').css('display', 'block');
             }
 
             if (d.data.id_perfilusuario == 2) {
               $('.apontamento').css('display', 'none');
               $('.agenda').css('display', 'block');
               $('.portal').css('display', 'none');
+              $('.folha').css('display', 'none');
             }
 
             if (d.data.id_perfilusuario == 3) {
               $('.agenda').css('display', 'none');
               $('.apontamento').css('display', 'block');
               $('.portal').css('display', 'none');
+              $('.folha').css('display', 'none');
             }
 
             if (d.data.id_perfilusuario == 4) {
               $('.apontamento').css('display', 'block');
               $('.agenda').css('display', 'block');
               $('.portal').css('display', 'none');
+              $('.folha').css('display', 'none');
             }
 
             //BPO e Fornecedor
@@ -61,6 +66,7 @@ function getDataUsuario(id)
               $('.apontamento').css('display', 'none');
               $('.agenda').css('display', 'block');
               $('.portal').css('display', 'block');
+              $('.folha').css('display', 'none');
             }
 
             //BPO, Fornecedor e Projeto
@@ -68,6 +74,7 @@ function getDataUsuario(id)
               $('.apontamento').css('display', 'block');
               $('.agenda').css('display', 'block');
               $('.portal').css('display', 'block');
+              $('.folha').css('display', 'none');
             }
 
             //Fornecedor
@@ -75,6 +82,7 @@ function getDataUsuario(id)
               $('.apontamento').css('display', 'none');
               $('.agenda').css('display', 'none');
               $('.portal').css('display', 'block');
+              $('.folha').css('display', 'none');
             }
 
             //Projeto e Fornecedor
@@ -82,8 +90,40 @@ function getDataUsuario(id)
               $('.apontamento').css('display', 'block');
               $('.agenda').css('display', 'none');
               $('.portal').css('display', 'block');
+              $('.folha').css('display', 'none');
             }
 
+            //Folha Pagto
+            if (d.data.id_perfilusuario == 9) {
+              $('.apontamento').css('display', 'none');
+              $('.agenda').css('display', 'none');
+              $('.portal').css('display', 'none');
+              $('.folha').css('display', 'block');
+            }
+
+            //BPO, Projeto, Folha Pagto
+            if (d.data.id_perfilusuario == 10) {
+              $('.apontamento').css('display', 'block');
+              $('.agenda').css('display', 'block');
+              $('.portal').css('display', 'none');
+              $('.folha').css('display', 'block');
+            }
+
+            //BPO e Folha Pagto
+            if (d.data.id_perfilusuario == 11) {
+              $('.apontamento').css('display', 'none');
+              $('.agenda').css('display', 'block');
+              $('.portal').css('display', 'none');
+              $('.folha').css('display', 'block');
+            }
+
+            //Projeto e Folha Pagto
+            if (d.data.id_perfilusuario == 12) {
+              $('.apontamento').css('display', 'block');
+              $('.agenda').css('display', 'none');
+              $('.portal').css('display', 'none');
+              $('.folha').css('display', 'block');
+            }
 
             if (d.data.id_responsabilidade != '') {
                 $("#id_responsabilidade").val(d.data.id_responsabilidade);

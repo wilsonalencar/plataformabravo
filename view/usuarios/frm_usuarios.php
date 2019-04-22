@@ -130,7 +130,6 @@
                           </select>
                         </div>
                       </div>
-
                       <div class="row">
                         <div class="col s3 folha" style="display: none">
                           <label for="id_perfilfolha">Perfil -> Folha Pagto</label>
@@ -142,7 +141,7 @@
                         <div class="col s3 folha" style="display: none">
                           <label for="id_folhaempresas">Folha Pagto -> Empresas</label>
                           <select id="id_folhaempresas" name="id_folhaempresas[]" multiple class="form-control input-sm">
-                            <?php $perfilusuario->folhaEmpresas(); ?>
+                            <?php $perfilusuario->folhaEmpresas($usuario->id); ?>
                           </select>
                         </div>
                       </div>
