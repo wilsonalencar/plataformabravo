@@ -81,4 +81,30 @@ class perfilusuario extends app
 			$row['id'], utf8_encode($row['nome']));
 		}
 	}
+
+	public function folhaPerfis($selected=0)
+	{
+		$conn = $this->FolhaDB->mysqli_connection;
+		$query = "SELECT id,nome FROM perfilusuario WHERE status = 'A' ORDER BY nome";
+
+		if($result = $conn->query($query))
+		{
+			while($row = $result->fetch_array(MYSQLI_ASSOC))
+			echo sprintf("<option %s value='%d'>%s</option>\n", $selected == $row['id'] ? "selected" : "",
+			$row['id'], utf8_encode($row['nome']));
+		}
+	}
+
+	public function folhaEmpresas()
+	{
+		$conn = $this->FolhaDB->mysqli_connection;
+		$query = sprintf("SELECT id,razao_social FROM empresa WHERE status = 'A' ORDER BY razao_social");
+
+		if($result = $conn->query($query))
+		{
+			while($row = $result->fetch_array(MYSQLI_ASSOC))
+			echo sprintf("<option %s value='%d'>%s</option>\n", $selected == $row['id'] ? "selected" : "",
+			$row['id'], utf8_decode($row['razao_social']));
+		}
+	}
 }

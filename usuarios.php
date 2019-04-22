@@ -26,6 +26,8 @@ $usuario->id_tributos 						= $usuario->getRequest('id_tributos', '');
 $usuario->id_perfilportal 					= $usuario->getRequest('id_perfilportal', '');
 $usuario->id_portalempresas 				= $usuario->getRequest('id_portalempresas', '');
 $usuario->cnpj_cpf 							= $usuario->getRequest('cnpj_cpf', '');
+$usuario->id_perfilfolha 					= $usuario->getRequest('id_perfilfolha', '');
+$usuario->id_folhaempresas 					= $usuario->getRequest('id_folhaempresas', '');
 
 if ($usuario->reset_senha == funcionalidadeConst::RESET_FALSE) {
 	$usuario->senha 				= $usuario->getRequest('senha', '');

@@ -4,6 +4,7 @@ require_once('database_apontamento.php');
 require_once('database_agenda.php');
 require_once('database_plataforma.php');
 require_once('database_portalfornecedor.php');
+require_once('database_folhapagto.php');
 require_once('funcionalidadeConst.php');
 /**
 * Lucas Alencar
@@ -17,6 +18,7 @@ class app extends config
 	public $AgendaDB;
 	public $PlatformDB;
 	public $PortalDB;
+	public $FolhaDB;
 
  	public function __construct(){
  		$this->validLogin();
@@ -25,6 +27,7 @@ class app extends config
  		$this->AgendaDB = new agenda;
  		$this->PlatformDB = new plataforma;
  		$this->PortalDB = new portalfornecedor;
+ 		$this->FolhaDB = new folhapagto;
  	
  		if (!$this->validAccess()) {
  			header('LOCATION:index.php');
