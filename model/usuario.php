@@ -224,7 +224,7 @@ class usuario extends app
 		$portal = $this->PortalDB->mysqli_connection;
 		$query = sprintf(" INSERT INTO usuarios (nome, email, id_perfilusuario, password, reset_senha, usuario, data_criacao, data_alteracao)
 		VALUES ('%s','%s',%d,'%s', '%s', '%s', '%s', '%s')", 
-			$this->nome, $this->email,$this->id_perfilportal,@crypt(funcionalidadeConst::SENHA_PADRAO), funcionalidadeConst::RESET_PORTAL_FALSE, $_SESSION['email'], date('Y-m-d h:i:s'), date('Y-m-d h:i:s'));
+			utf8_decode($this->nome), $this->email,$this->id_perfilportal,@crypt(funcionalidadeConst::SENHA_PADRAO), funcionalidadeConst::RESET_PORTAL_FALSE, $_SESSION['email'], date('Y-m-d h:i:s'), date('Y-m-d h:i:s'));
 		if (!$portal->query($query)) {
 			$this->msg = "Ocorreu um erro no PORTAL, contate o administrador do sistema!";
 			return false;	
@@ -431,11 +431,10 @@ class usuario extends app
 	{
 		if (!empty($this->id)) {
 			$conn = $this->PlatformDB->mysqli_connection;
-			$query = sprintf(" UPDATE plataformausuario SET nome = '%s', email ='%s', id_perfilusuario = %d, id_responsabilidade = %d, reset_senha = '%s' , usuario = '%s', data_alteracao = NOW(), status = '%s'", 
-			$this->nome , $this->email, $this->id_plataforma, $this->id_responsabilidade, $this->reset_senha, $_SESSION['email'],$this->status);
+			$query = " UPDATE plataformausuario SET nome = '".$this->nome."', email ='".$this->email."', id_perfilusuario = ".$this->id_plataforma.", id_responsabilidade = ".$this->id_responsabilidade.", reset_senha = '".$this->reset_senha."' , usuario = '".$_SESSION['email']."', data_alteracao = NOW(), status = '".$this->status."'";
 
 			if ($this->reset_senha == 'S') {
-				$query .= " , senha = '".md5(funcionalidadeConst::SENHA_PADRAO)."'";	
+				$query .= " , senha = '".base64_encode(funcionalidadeConst::SENHA_PADRAO)."'";	
 			}
 
 			$query .=  " WHERE id = '".$this->id."'";
@@ -519,7 +518,7 @@ class usuario extends app
 					$user = $this->searchPortal($this->email);
 					$conn = $this->PortalDB->mysqli_connection;
 
-					$query = "UPDATE usuarios SET nome = '".$this->nome."', email ='".$this->email."' WHERE usuarioid = ".$user['id'];
+					$query = "UPDATE usuarios SET nome = '".utf8_decode($this->nome)."', email ='".$this->email."' WHERE usuarioid = ".$user['id'];
 					if (!$conn->query($query)) {
 						$this->msg = "Ocorreu um erro, contate o administrador do sistema!";
 						return false;	
