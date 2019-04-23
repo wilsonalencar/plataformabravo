@@ -47,27 +47,28 @@ class usuario extends app
 			return false;	
 		}
 
-		if (empty($this->id_responsabilidade) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_FOLHA)) {
+		if (empty($this->id_responsabilidade) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_FOLHA) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_FOLHA)  && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_PORTAL)) {
 			$this->msg = "Para criar um usuário para o sistema Gestão de Projetos, é necessário informar a responsabilidade do mesmo.";
 			return false;	
 		}
 
-		if (empty($this->id_apontamento) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_FOLHA)) {
+
+		if (empty($this->id_apontamento) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_FOLHA) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_FOLHA) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_PORTAL)) {
 			$this->msg = "Para criar um usuário para o sistema Gestão de Projetos, é necessário informar o perfil do mesmo.";
 			return false;	
 		}
 
-		if (empty($this->id_agenda) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_FOLHA)) {
+		if (empty($this->id_agenda) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_FOLHA) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS_FOLHA)) {
 			$this->msg = "Para criar um usuário para o sistema Tax Calendar, é necessário informar o perfil do mesmo.";
 			return false;	
 		}
 
-		if (empty($this->id_perfilportal) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO) && ($this->id_plataforma != funcionalidadeConst::PERFIL_FOLHA)) {
+		if (empty($this->id_perfilportal) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO) && ($this->id_plataforma != funcionalidadeConst::PERFIL_FOLHA) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_FOLHA) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_PROJETOS) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_PROJETOS_FOLHA) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS_FOLHA)) {
 			$this->msg = "Para criar um usuário para o sistema Portal do Fornecedor, é necessário informar o perfil do mesmo.";
 			return false;	
 		}
 
-		if (empty($this->id_perfilfolha) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL)) {
+		if (empty($this->id_perfilfolha) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_PROJETOS) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_BPO_PROJETOS_PORTAL) && ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS_PORTAL)) {
 			$this->msg = "Para criar um usuário para o sistema Folha de Pagamento, é necessário informar o perfil do mesmo.";
 			return false;	
 		}
@@ -177,6 +178,7 @@ class usuario extends app
 		$query = sprintf(" INSERT INTO usuarios (nome, email, id_perfilusuario, id_responsabilidade, senha, reset_senha, usuario, status)
 		VALUES ('%s','%s', %d, %d, '%s', '%s', '%s', '%s')", 
 			$this->nome, $this->email,$this->id_apontamento, $this->id_responsabilidade,md5(funcionalidadeConst::SENHA_PADRAO), funcionalidadeConst::RESET_FALSE, $_SESSION['email'], $this->status);
+
 		if (!$projetos->query($query)) {
 			$this->msg = "Ocorreu um erro no GESTÃO DE PROJETOS, contate o administrador do sistema!";
 			return false;	
@@ -248,6 +250,32 @@ class usuario extends app
 		$query = sprintf(" INSERT INTO usuarios (nome, email, id_perfilusuario, senha, reset_senha, usuario, data_criacao, data_alteracao, status)
 		VALUES ('%s','%s',%d,'%s', '%s', '%s', '%s', '%s', '%s')", 
 			$this->nome, $this->email,$this->id_perfilfolha,md5(funcionalidadeConst::SENHA_PADRAO), funcionalidadeConst::RESET_FOLHA_FALSE, $_SESSION['email'], date('Y-m-d h:i:s'), date('Y-m-d h:i:s'), funcionalidadeConst::ATIVO);
+
+		if (!$folha->query($query)) {
+			$this->msg = "Ocorreu um erro no sistema Folha de Pagamento, contate o administrador do sistema!";
+			return false;	
+		}
+		
+		$lastinsertID = $folha->insert_id;
+
+		if (is_array($this->id_folhaempresas)) {
+			foreach ($this->id_folhaempresas as $l => $empresa) {
+				$queryEmp = "INSERT INTO permissaoempresas (id_usuario, id_empresa) VALUES (".$lastinsertID.",".$empresa.")";
+				if (!$folha->query($queryEmp)) {
+					$this->msg = "Ocorreu um erro no sistema Folha de Pagamento, contate o administrador do sistema!";
+					return false;	
+				}
+			}
+		}
+	}
+
+	public function updateFolha(){
+		$folha = $this->FolhaDB->mysqli_connection;
+		$senha = base64_decode($this->senha);
+		$query = sprintf(" INSERT INTO usuarios (nome, email, id_perfilusuario, senha, reset_senha, usuario, data_criacao, data_alteracao, status)
+		VALUES ('%s','%s',%d,'%s', '%s', '%s', '%s', '%s', '%s')", 
+			$this->nome, $this->email,$this->id_perfilfolha,md5($senha), funcionalidadeConst::RESET_FOLHA_FALSE, $_SESSION['email'], date('Y-m-d h:i:s'), date('Y-m-d h:i:s'), funcionalidadeConst::ATIVO);
+
 		if (!$folha->query($query)) {
 			$this->msg = "Ocorreu um erro no sistema Folha de Pagamento, contate o administrador do sistema!";
 			return false;	
@@ -457,7 +485,7 @@ class usuario extends app
 						return false;	
 					}	
 				}
-			} else {
+			} else {				
 				$this->insertApontamento();
 			}
 		}
@@ -545,11 +573,11 @@ class usuario extends app
 					$this->statusUsuariosFolha($this->email, funcionalidadeConst::INATIVO);
 				} else {
 					$this->deleteFolha($this->email, true);
-					
+
 					$user = $this->searchFolha($this->email);
 					$conn = $this->FolhaDB->mysqli_connection;
 
-					$query = "UPDATE usuarios SET nome = '".$this->nome."', email ='".$this->email."' WHERE usuarioid = ".$user['id'];
+					$query = "UPDATE usuarios SET nome = '".$this->nome."', email ='".$this->email."', status ='".funcionalidadeConst::ATIVO."' WHERE usuarioid = ".$user['id'];
 					if (!$conn->query($query)) {
 						$this->msg = "Ocorreu um erro, contate o administrador do sistema!";
 						return false;	
@@ -566,7 +594,8 @@ class usuario extends app
 					}
 				}
 			} else {
-				$this->insertFolha();
+
+				$this->updateFolha();
 			}
 		}
 
@@ -652,7 +681,7 @@ class usuario extends app
 	public function searchFolha($email)
 	{
 		$conn = $this->FolhaDB->mysqli_connection;	
-		$query = 'SELECT usuarioid as id FROM usuarios WHERE email = "'.$email.'" limit 1';
+		$query = 'SELECT usuarioid as id, senha FROM usuarios WHERE email = "'.$email.'" limit 1';
 
 		if (!$result = $conn->query($query)) {
 			return false;	
@@ -736,14 +765,14 @@ class usuario extends app
 
 		$query = sprintf("DELETE FROM permissaoempresas WHERE id_usuario = %d ", $user['id']);
 		if (!$result = $conn->query($query)) {
-			$this->msg = "Ocorreu um erro na exlusão do usuário no portal.";
+			$this->msg = "Ocorreu um erro na exlusão do usuário no sistema.";
 			return false;	
 		}
 
 		if (!$all) {
 			$query = sprintf("DELETE FROM usuarios WHERE usuarioid = %d ", $user['id']);
 			if (!$result = $conn->query($query)) {
-				$this->msg = "Ocorreu um erro na exlusão do usuário no portal.";
+				$this->msg = "Ocorreu um erro na exlusão do usuário no sistema.";
 				return false;	
 			}
 		}
