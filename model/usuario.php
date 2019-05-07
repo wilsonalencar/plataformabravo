@@ -169,10 +169,10 @@ class usuario extends app
 		if ($this->id > 0) {
 			return $this->update();
 		}
+
 		return $this->insert();
 	}
-
-
+	
 	public function insertApontamento(){
 		$projetos = $this->ApontDB->mysqli_connection;
 		$query = sprintf(" INSERT INTO usuarios (nome, email, id_perfilusuario, id_responsabilidade, senha, reset_senha, usuario, status)
@@ -246,6 +246,7 @@ class usuario extends app
 	}
 
 	public function insertFolha(){
+
 		$folha = $this->FolhaDB->mysqli_connection;
 		$query = sprintf(" INSERT INTO usuarios (nome, email, id_perfilusuario, senha, reset_senha, usuario, data_criacao, data_alteracao, status)
 		VALUES ('%s','%s',%d,'%s', '%s', '%s', '%s', '%s', '%s')", 
@@ -270,6 +271,7 @@ class usuario extends app
 	}
 
 	public function updateFolha(){
+
 		$folha = $this->FolhaDB->mysqli_connection;
 		$senha = base64_decode($this->senha);
 		$query = sprintf(" INSERT INTO usuarios (nome, email, id_perfilusuario, senha, reset_senha, usuario, data_criacao, data_alteracao, status)
@@ -341,7 +343,6 @@ class usuario extends app
 		}
 
 		if ($this->id_plataforma != funcionalidadeConst::PERFIL_PROJETOS && $this->id_plataforma != funcionalidadeConst::PERFIL_BPO && $this->id_plataforma != funcionalidadeConst::PERFIL_PORTAL) {
-
 			if (!$this->findAnotherSystem('folha', $this->email)) {
 				$this->insertFolha();
 			} else {
@@ -422,7 +423,6 @@ class usuario extends app
 
 	public function findAnotherSystem($sistema, $email)
 	{
-
 		if ($sistema == 'agenda') {
 			$conn = $this->AgendaDB->mysqli_connection;
 			$query = 'SELECT * FROM users WHERE email = "'.$email.'"';
@@ -572,12 +572,14 @@ class usuario extends app
 				if ($this->id_plataforma == funcionalidadeConst::PERFIL_PROJETOS || $this->id_plataforma == funcionalidadeConst::PERFIL_BPO || $this->id_plataforma == funcionalidadeConst::PERFIL_PORTAL) {
 					$this->statusUsuariosFolha($this->email, funcionalidadeConst::INATIVO);
 				} else {
+
 					$this->deleteFolha($this->email, true);
 
 					$user = $this->searchFolha($this->email);
 					$conn = $this->FolhaDB->mysqli_connection;
 
-					$query = "UPDATE usuarios SET nome = '".$this->nome."', email ='".$this->email."', status ='".funcionalidadeConst::ATIVO."' WHERE usuarioid = ".$user['id'];
+					$query = "UPDATE usuarios SET nome = '".$this->nome."', email ='".$this->email."', id_perfilusuario ='".$this->id_perfilfolha."', status ='".funcionalidadeConst::ATIVO."' WHERE usuarioid = ".$user['id'];
+
 					if (!$conn->query($query)) {
 						$this->msg = "Ocorreu um erro, contate o administrador do sistema!";
 						return false;	
@@ -594,7 +596,6 @@ class usuario extends app
 					}
 				}
 			} else {
-
 				$this->updateFolha();
 			}
 		}
