@@ -2,14 +2,14 @@
 
 class configAgenda extends agenda
 {
-const  dominio = 'http://dev.agenda/';
-const  path    = '/var/www/html/agenda/';
+const  dominio = 'http://homo-innagenda.bravobpo.com.br/';
+const  path    = 'C:/wamp/www/agenda/';
 }
 
 class agenda {	
 	public $mysqli_connection;
 	public function __construct() {
-		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Everty_14', 'agenda');
+		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Br4v0@', 'agenda');
 		if($mysqli_connection->connect_error){
 		  echo "Desconectado! Erro: " . $mysqli_connection->connect_error;
 		}

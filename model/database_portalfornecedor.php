@@ -2,14 +2,14 @@
 
 class configPortal extends portalfornecedor
 {
-const  dominio = 'http://dev.portalfornecedor/';
-const  path    = '/var/www/html/portalfornecedor/';
+const  dominio = 'http://homo-bravoplataforma.bravobpo.com.br/portalfornecedor/public/portalfornecedor';
+const  path    = 'C:/wamp/www/plataforma/portalfornecedor';
 }
 
 class portalfornecedor {	
 	public $mysqli_connection;
 	public function __construct() {
-		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Everty_14', 'portalfornecedor');
+		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Br4v0@', 'portalfornecedor');
 		if($mysqli_connection->connect_error){
 		  echo "Desconectado! Erro: " . $mysqli_connection->connect_error;
 		}

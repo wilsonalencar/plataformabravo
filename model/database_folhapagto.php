@@ -2,14 +2,14 @@
 
 class configFolha extends folhapagto
 {
-const  dominio = 'http://dev.folhapagto/';
-const  path    = '/var/www/html/folhapagto/';
+const  dominio = 'http://homo-bravoplataforma.bravobpo.com.br/folha-pagamento/';
+const  path    = 'C:/wamp/www/plataforma/folha-pagamento/';
 }
 
 class folhapagto {	
 	public $mysqli_connection;
 	public function __construct() {
-		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Everty_14', 'folhapagto');
+		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Br4v0@', 'folhapagto');
 		if($mysqli_connection->connect_error){
 		  echo "Desconectado! Erro: " . $mysqli_connection->connect_error;
 		}

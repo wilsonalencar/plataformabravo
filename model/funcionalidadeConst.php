@@ -46,8 +46,8 @@ class funcionalidadeConst
 	const PERFIL_BPO_FOLHA = 11;
 	const PERFIL_PROJETOS_FOLHA = 12;
 
-	const LINK_GP = 'http://dev.apontamentohoras/login.php';
-	const LINK_TAX = 'http://dev.agenda/login';
-	const LINK_PORTAL = 'http://dev.portalfornecedor/login';
-	const LINK_FOLHA = 'http://dev.folhapagto/login.php';
+	const LINK_GP = 'http://homolgestaoprojetos.bravobpo.com.br/login.php';
+	const LINK_TAX = 'http://homo-innagenda.bravobpo.com.br/login';
+	const LINK_PORTAL = 'http://homo-bravoplataforma.bravobpo.com.br/portalfornecedor/public/portalfornecedor/login';
+	const LINK_FOLHA = 'http://homo-bravoplataforma.bravobpo.com.br/folha-pagamento/login.php';
 }
