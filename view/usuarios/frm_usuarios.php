@@ -1,4 +1,4 @@
-<?php
+﻿<?php
   require_once(app::path.'view/header.php');
 ?>
     
@@ -114,6 +114,37 @@
                           </select>
                         </div>
                       </div>
+
+                      <div class="row">
+                        <div class="col s3 portal" style="display: none">
+                          <label for="id_perfilportal">Perfil -> Portal do Fornecedor</label>
+                          <select id="id_perfilportal" name="id_perfilportal" class="form-control input-sm">
+                            <option value="">Perfil Portal do Fornecedor</option>
+                            <?php $perfilusuario->portalPerfis($usuario->id); ?>
+                          </select>
+                        </div>
+                        <div class="col s3 portal" style="display: none">
+                          <label for="id_portalempresas">Portal do Fornecedor -> Empresas</label>
+                          <select id="id_portalempresas" name="id_portalempresas[]" multiple class="form-control input-sm">
+                            <?php $perfilusuario->portalEmpresas($usuario->id); ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col s3 folha" style="display: none">
+                          <label for="id_perfilfolha">Perfil -> Folha Pagto</label>
+                          <select id="id_perfilfolha" name="id_perfilfolha" class="form-control input-sm">
+                            <option value="">Perfil Folha Pagto</option>
+                            <?php $perfilusuario->folhaPerfis($usuario->id); ?>
+                          </select>
+                        </div>
+                        <div class="col s3 folha" style="display: none">
+                          <label for="id_folhaempresas">Folha Pagto -> Empresas</label>
+                          <select id="id_folhaempresas" name="id_folhaempresas[]" multiple class="form-control input-sm">
+                            <?php $perfilusuario->folhaEmpresas($usuario->id); ?>
+                          </select>
+                        </div>
+                      </div>
                       <hr />
 
                       <div class="row">
@@ -160,26 +191,100 @@ function checkSistem(value){
   if (value == 0) {
     $('.apontamento').css('display', 'none');
     $('.agenda').css('display', 'none');
+    $('.portal').css('display', 'none');
+    $('.folha').css('display', 'none');
   }
 
   if (value == 1) {
     $('.apontamento').css('display', 'block');
     $('.agenda').css('display', 'block');
+    $('.portal').css('display', 'block');
+    $('.folha').css('display', 'block');
   }
 
   if (value == 2) {
     $('.apontamento').css('display', 'none');
     $('.agenda').css('display', 'block');
+    $('.portal').css('display', 'none');
+    $('.folha').css('display', 'none');
   }
 
   if (value == 3) {
     $('.agenda').css('display', 'none');
     $('.apontamento').css('display', 'block');
+    $('.portal').css('display', 'none');
+    $('.folha').css('display', 'none');
   }
 
   if (value == 4) {
     $('.apontamento').css('display', 'block');
     $('.agenda').css('display', 'block');
+    $('.portal').css('display', 'none');
+    $('.folha').css('display', 'none');
+  }
+
+  //BPO e Fornecedor
+  if (value == 5) {
+    $('.apontamento').css('display', 'none');
+    $('.agenda').css('display', 'block');
+    $('.portal').css('display', 'block');
+    $('.folha').css('display', 'none');
+  }
+
+  //BPO, Fornecedor e Projeto
+  if (value == 6) {
+    $('.apontamento').css('display', 'block');
+    $('.agenda').css('display', 'block');
+    $('.portal').css('display', 'block');
+    $('.folha').css('display', 'none');
+  }
+
+  //Fornecedor
+  if (value == 7) {
+    $('.apontamento').css('display', 'none');
+    $('.agenda').css('display', 'none');
+    $('.portal').css('display', 'block');
+    $('.folha').css('display', 'none');
+  }
+
+  //Projeto e Fornecedor
+  if (value == 8) {
+    $('.apontamento').css('display', 'block');
+    $('.agenda').css('display', 'none');
+    $('.portal').css('display', 'block');
+    $('.folha').css('display', 'none');
+  }
+
+  //Folha Pagto
+  if (value == 9) {
+    $('.apontamento').css('display', 'none');
+    $('.agenda').css('display', 'none');
+    $('.portal').css('display', 'none');
+    $('.folha').css('display', 'block');
+  }
+
+  //BPO, Projeto, Folha Pagto
+  if (value == 10) {
+    $('.apontamento').css('display', 'block');
+    $('.agenda').css('display', 'block');
+    $('.portal').css('display', 'none');
+    $('.folha').css('display', 'block');
+  }
+
+  //BPO e Folha Pagto
+  if (value == 11) {
+    $('.apontamento').css('display', 'none');
+    $('.agenda').css('display', 'block');
+    $('.portal').css('display', 'none');
+    $('.folha').css('display', 'block');
+  }
+
+  //Projeto e Folha Pagto
+  if (value == 12) {
+    $('.apontamento').css('display', 'block');
+    $('.agenda').css('display', 'none');
+    $('.portal').css('display', 'none');
+    $('.folha').css('display', 'block');
   }
 
 }

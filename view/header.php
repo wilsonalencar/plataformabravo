@@ -70,18 +70,29 @@
                         </li>
                         <?php } ?>
 
-                        <?php if ($_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS) {?>
+                        <?php if ($_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PORTAL && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_FOLHA && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS_PORTAL && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS_FOLHA) {?>
                                 <li>
                                     <a class="active-menu" href="#" onclick="Tax()"><i class="fa fa-book"></i> Fiscal</a>
                                 </li>
                         <?php } ?>
                         
-                        <?php if ( $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO) { ?>
+                        <?php if ( $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PORTAL && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_FOLHA && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO_PORTAL && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO_FOLHA) { ?>
                             <li>
                                 <a class="active-menu" href="#" onclick="Gestao()"><i class="fa fa-bar-chart-o"></i> Gestão de Projetos  </a>
                             </li>
                         <?php } ?>
 
+                        <?php if ( $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_FOLHA && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO_FOLHA && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS_FOLHA && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO_PROJETOS_FOLHA && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO_PROJETOS) { ?>
+                            <li>
+                                <a class="active-menu" href="#" onclick="Portal()"><i class="fa fa-group"></i> Portal do Fornecedor  </a>
+                            </li>
+                        <?php } ?>
+
+                        <?php if ( $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PORTAL && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO_PROJETOS && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO_PORTAL && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_BPO_PROJETOS_PORTAL && $_SESSION['id_perfilusuario'] != funcionalidadeConst::PERFIL_PROJETOS_PORTAL) { ?>
+                            <li>
+                                <a class="active-menu" href="#" onclick="Folha()"><i class="fa fa-file"></i> Folha de Pagamento  </a>
+                            </li>
+                        <?php } ?>
 
                     </ul>
                 </div>
@@ -99,6 +110,16 @@
             <input type="hidden" name="password" value="<?php echo $_SESSION['senha']; ?>">
         </form>
 
+        <form action="<?php echo funcionalidadeConst::LINK_PORTAL ?>" id="portal" method="POST">
+            <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+            <input type="hidden" name="password" value="<?php echo $_SESSION['senha']; ?>">
+        </form>
+
+        <form action="<?php echo funcionalidadeConst::LINK_FOLHA ?>" id="folha" method="POST">
+            <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+            <input type="hidden" name="senha" value="<?php echo $_SESSION['senha']; ?>">
+        </form>
+
 
 
 <script type="text/javascript">
@@ -108,6 +129,14 @@
 
   function Tax(){
     $('#agenda').submit();
+  }
+
+  function Portal(){
+    $('#portal').submit();
+  }
+
+  function Folha(){
+    $('#folha').submit();
   }
 
 </script>
