@@ -125,7 +125,7 @@ CREATE TABLE `plataformausuario` (
 
 LOCK TABLES `plataformausuario` WRITE;
 /*!40000 ALTER TABLE `plataformausuario` DISABLE KEYS */;
-INSERT INTO `plataformausuario` VALUES (19,'Admin','admin@platform.com',1,10,'admin','N','A','Admin@hotmail.com','2018-10-10 00:00:00','2018-10-10 00:00:00');
+INSERT INTO `plataformausuario` VALUES (1,'Admin','admin@platform.com',1,10,'admin','N','A','Admin@hotmail.com','2018-10-10 00:00:00','2018-10-10 00:00:00');
 /*!40000 ALTER TABLE `plataformausuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

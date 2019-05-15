@@ -30,6 +30,6 @@ class funcionalidadeConst
 	const PERFIL_PROJETOS = 3;
 	const PERFIL_BPO_PROJETOS = 4;
 
-	const LINK_GP = 'http://dev.apontamentohoras/login.php';
-	const LINK_TAX = 'http://dev.agenda/login';
+	const LINK_GP = 'http://gestaoprojetos.bravobpo.com.br/login.php';
+	const LINK_TAX = 'http://taxcalendar.bravobpo.com.br/agenda/public/login';
 }

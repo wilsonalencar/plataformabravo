@@ -2,14 +2,14 @@
 
 class config extends plataforma
 {
-const  dominio = 'http://dev.platform/';
-const  path    = '/var/www/html/unionit/plataforma/';
+const  dominio = 'http://bravoplataforma.bravobpo.com.br/';
+const  path    = 'F:/wamp/www/plataforma/';
 }
 
 class plataforma {
 	public $mysqli_connection;
 	public function __construct() {
-		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'cpd123', 'plataforma');
+		$mysqli_connection = new MySQLi('127.0.0.1', 'root', 'Br4v0@', 'plataforma');
 		if($mysqli_connection->connect_error){
 		  echo "Desconectado! Erro: " . $mysqli_connection->connect_error;
 		}

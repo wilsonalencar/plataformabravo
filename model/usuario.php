@@ -325,7 +325,7 @@ class usuario extends app
 			$this->nome , $this->email, $this->id_plataforma, $this->id_responsabilidade, $this->reset_senha, $_SESSION['email'],$this->status);
 
 			if ($this->reset_senha == 'S') {
-				$query .= " , senha = '".md5(funcionalidadeConst::SENHA_PADRAO)."'";	
+				$query .= " , senha = '".base64_encode(funcionalidadeConst::SENHA_PADRAO)."'";	
 			}
 
 			$query .=  " WHERE id = '".$this->id."'";

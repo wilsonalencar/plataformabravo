@@ -76,13 +76,12 @@
                       </div>
 
                       <hr />
-                      
                       <div class="row apontamento" style="display: none">
                         <div class="col s3" >
                             <label for="id_apontamento">Perfil -> Apontamento Horas</label>
                             <select id="id_apontamento" name="id_apontamento" class="form-control input-sm">
                               <option value="">Perfil Gestão de Projetos</option>
-                              <?php $perfilusuario->apontamentoPerfis($usuario->id_perfilusuario); ?>
+                              <?php $perfilusuario->apontamentoPerfis($usuario->id); ?>
                             </select>
                         </div> 
 
@@ -99,19 +98,19 @@
                           <label for="id_agenda">Perfil -> Agenda</label>
                           <select id="id_agenda" name="id_agenda" class="form-control input-sm">
                             <option value="">Perfil Agenda</option>
-                            <?php $perfilusuario->agendaPerfis($usuario->id_perfilusuario); ?>
+                            <?php $perfilusuario->agendaPerfis($usuario->id); ?>
                           </select>
                         </div>
                         <div class="col s3 agenda" style="display: none">
                           <label for="id_empresas">Agenda -> Empresas</label>
                           <select id="id_empresas" name="id_empresas[]" multiple class="form-control input-sm">
-                            <?php $perfilusuario->agendaEmpresas(); ?>
+                            <?php $perfilusuario->agendaEmpresas($usuario->id); ?>
                           </select>
                         </div>
                         <div class="col s3 agenda" style="display: none">
                           <label for="id_tributos">Agenda -> Tributos</label>
                           <select id="id_tributos" name="id_tributos[]" class="form-control input-sm" multiple>
-                            <?php $perfilusuario->agendaTributos(); ?>
+                            <?php $perfilusuario->agendaTributos($usuario->id); ?>
                           </select>
                         </div>
                       </div>
